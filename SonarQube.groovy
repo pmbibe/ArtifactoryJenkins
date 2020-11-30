@@ -6,7 +6,7 @@
    stage('Code Quality Check via SonarQube') {
        def scannerHome = tool 'sonarqube';
            withSonarQubeEnv("SonarQube") {
-          sh "${scannerHome}/bin/sonar-scanner"
+          sh "${scannerHome}/bin/sonar-scanner -Dsonar.webhooks.project=https://192.168.141.241:8080/sonarqube-webhook/"
                }
            }
     stage("Quality Gate"){
